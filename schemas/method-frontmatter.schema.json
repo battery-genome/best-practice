@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/battinfo/schemas/method-frontmatter.schema.json",
+  "title": "Method guide frontmatter",
+  "description": "Structured metadata carried in the YAML frontmatter of each method.md. Explanatory genre: no supersession or conformance semantics. Validated by scripts/build_manifest.py and CI.",
+  "type": "object",
+  "required": ["id", "title", "summary", "version", "status", "test_kinds", "authors"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "description": "Stable identifier: 'method:' followed by the folder slug.",
+      "type": "string",
+      "pattern": "^method:[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "summary": {
+      "description": "One-sentence summary used in listings and search results.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "version": {
+      "description": "Semantic version of this guide. Methods evolve freely; bump minor for substantive additions.",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "review", "published", "archived"]
+    },
+    "test_kinds": {
+      "description": "The test kinds this method corresponds to. Primary key for contextual surfacing: a method page lists practices whose applies_to.test_kinds overlap.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "cycling", "capacity_check", "rate_capability", "quasi_ocv",
+          "hppc", "ici", "gitt", "dcir", "eis", "impedance",
+          "calendar_ageing", "formation", "rpt", "field", "duty_cycle",
+          "wltp", "nedc", "sem", "characterization", "other"
+        ]
+      }
+    },
+    "authors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "orcid": {
+            "anyOf": [
+              { "type": "string", "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}[0-9X]$" },
+              { "type": "null" }
+            ]
+          },
+          "affiliation": { "type": "string" }
+        }
+      }
+    },
+    "citations": {
+      "description": "Foundational literature for the method.",
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "related_practices": {
+      "description": "Explicit practice ids beyond the automatic test-kind join (e.g. a data-management practice relevant to this method).",
+      "type": "array",
+      "items": { "type": "string", "pattern": "^practice:[a-z0-9]+(-[a-z0-9]+)*$" }
+    },
+    "related_protocols": {
+      "description": "BattINFO test-protocol IRIs implementing this method.",
+      "type": "array",
+      "items": { "type": "string", "format": "uri" }
+    },
+    "created_at": { "type": "string", "format": "date" },
+    "updated_at": { "type": "string", "format": "date" }
+  }
+}

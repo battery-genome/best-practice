@@ -1,4 +1,4 @@
-name: Validate practices
+name: Validate guidance
 
 on:
   push:

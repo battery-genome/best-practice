@@ -1,5 +1,5 @@
 {
-  "schema_version": "battery-genome-best-practices/v1alpha1",
+  "schema_version": "battery-genome-guidance/v1alpha1",
   "practices": [
     {
       "id": "practice:publish-timeseries-bdf",
@@ -43,5 +43,6 @@
       "staging": false
     }
   ],
+  "methods": [],
   "staging": []
 }
