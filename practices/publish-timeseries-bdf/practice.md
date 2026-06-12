@@ -14,9 +14,19 @@ authors:
   - name: Simon Clark
     orcid: null
     affiliation: SINTEF
-citations:
-  - "Battery Data Alliance, Battery Data Format specification and reference implementation. https://github.com/battery-data-alliance/battery-data-format"
-  - "batterydf Python package. https://pypi.org/project/batterydf/"
+sources:
+  - role: primary
+    title: Battery Data Format specification and reference implementation
+    authors: Battery Data Alliance
+    url: https://github.com/battery-data-alliance/battery-data-format
+    accessed: 2026-06-12
+    note: Canonical column vocabulary, units, validation rules, and metadata sidecar contracts.
+  - role: tool
+    title: batterydf Python package
+    authors: Battery Data Alliance
+    url: https://pypi.org/project/batterydf/
+    accessed: 2026-06-12
+    note: Reference implementation used for conversion and validation in this practice.
 created_at: 2026-06-12
 updated_at: 2026-06-12
 ---

@@ -9,7 +9,14 @@ authors:
   - name: Your Name
     orcid: null
     affiliation: Your Organization
-citations: []
+sources:
+  - role: primary
+    title: Title of the source this document is built on
+    authors: Author One, Author Two
+    year: 2023
+    venue: Journal Name 14, 2289
+    doi: 10.1000/example-doi
+    note: What this document takes from the source.
 related_practices: []
 related_protocols: []
 created_at: 2026-06-12
@@ -31,9 +38,10 @@ quantities involved, and the assumptions the interpretation rests on.
 ## Procedure
 
 How to run it: instrument requirements, cell preparation, the sequence of
-steps, typical parameter ranges, and what to record. Link to machine-readable
-test-protocol records in `related_protocols` rather than duplicating step
-tables here.
+steps, typical parameter ranges, and what to record. Stay tool-generic —
+describe the measurement, not a specific instrument's UI. Link to
+machine-readable test-protocol records in `related_protocols` rather than
+duplicating step tables here.
 
 ## Analysis
 
@@ -48,4 +56,4 @@ techniques.
 
 ## References
 
-Full citations for everything in the frontmatter `citations` list.
+Full citations for everything in the frontmatter `sources` list.

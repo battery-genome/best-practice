@@ -34,8 +34,34 @@ local draft  →  <type>/_staging/<slug>/  →  <type>/<slug>/  →  platform
    `<type>/<slug>/`, set `status: published`, and set `updated_at`.
    The platform picks the document up from the next manifest export.
 
+## Sources and attribution
+
+Provenance is structural, not optional: both frontmatter schemas require a
+`sources` list with at least one entry, and CI rejects documents without one.
+Each source declares a `role`:
+
+- `primary` — the work the content is built on
+- `background` — context, history, further reading
+- `adapted` — text, figures, or tables adapted from the source; **requires**
+  the source `license` and a `note` saying exactly what was adapted. Only
+  adapt material whose license permits it (e.g. CC-BY), and keep the
+  adaptation note specific enough that a reader can locate the original.
+- `data` — a dataset the document draws on
+- `tool` — software the document depends on
+
+Give a `doi` or `url` for every source, and an `accessed` date for web
+sources. Original synthesis by the listed authors needs no `adapted` entry —
+but every factual claim should still trace to a `primary` or `background`
+source. The platform renders the sources block as the document's attribution
+panel, so what you write here is the public credit.
+
 ## Rules
 
+- **Methods are tool-generic.** A method guide describes the measurement
+  ("apply a current pulse and record the relaxation"), not an instrument
+  walkthrough ("click Schedule in EC-Lab"). Instrument- or software-specific
+  how-tos belong with the tool's own documentation or in the Academy, not
+  here.
 - **Versioning.** Any change to a practice's normative content bumps
   `version` (semver: patch for clarifications, minor for new guidance, major
   for changed recommendations). Methods version more loosely: bump minor for

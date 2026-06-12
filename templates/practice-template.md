@@ -14,7 +14,14 @@ authors:
   - name: Your Name
     orcid: null
     affiliation: Your Organization
-citations: []
+sources:
+  - role: primary
+    title: Title of the source this document is built on
+    authors: Author One, Author Two
+    year: 2023
+    venue: Journal Name 14, 2289
+    doi: 10.1000/example-doi
+    note: What this document takes from the source.
 related_protocols: []
 created_at: 2026-06-12
 updated_at: 2026-06-12
@@ -53,4 +60,4 @@ future work would strengthen it.
 
 ## References
 
-Full citations for everything in the frontmatter `citations` list.
+Full citations for everything in the frontmatter `sources` list.

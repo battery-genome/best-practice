@@ -33,9 +33,23 @@
           "affiliation": "SINTEF"
         }
       ],
-      "citations": [
-        "Battery Data Alliance, Battery Data Format specification and reference implementation. https://github.com/battery-data-alliance/battery-data-format",
-        "batterydf Python package. https://pypi.org/project/batterydf/"
+      "sources": [
+        {
+          "role": "primary",
+          "title": "Battery Data Format specification and reference implementation",
+          "authors": "Battery Data Alliance",
+          "url": "https://github.com/battery-data-alliance/battery-data-format",
+          "accessed": "2026-06-12",
+          "note": "Canonical column vocabulary, units, validation rules, and metadata sidecar contracts."
+        },
+        {
+          "role": "tool",
+          "title": "batterydf Python package",
+          "authors": "Battery Data Alliance",
+          "url": "https://pypi.org/project/batterydf/",
+          "accessed": "2026-06-12",
+          "note": "Reference implementation used for conversion and validation in this practice."
+        }
       ],
       "created_at": "2026-06-12",
       "updated_at": "2026-06-12",
@@ -43,6 +57,50 @@
       "staging": false
     }
   ],
-  "methods": [],
+  "methods": [
+    {
+      "id": "method:ici",
+      "title": "Intermittent Current Interruption (ICI)",
+      "summary": "Resistance and diffusion characterization from brief, regular current interruptions during constant-current cycling — quasi-continuous R and k values, and solid-state diffusion coefficients in a fraction of the time GITT requires.",
+      "version": "0.1.0",
+      "status": "published",
+      "test_kinds": [
+        "ici"
+      ],
+      "authors": [
+        {
+          "name": "Simon Clark",
+          "orcid": null,
+          "affiliation": "SINTEF"
+        }
+      ],
+      "sources": [
+        {
+          "role": "primary",
+          "title": "Rapid determination of solid-state diffusion coefficients in Li-based batteries via intermittent current interruption method",
+          "authors": "Yu-Chuan Chien, Haidong Liu, Ashok S. Menon, William R. Brant, Daniel Brandell, Matthew J. Lacey",
+          "year": 2023,
+          "venue": "Nature Communications 14, 2289",
+          "doi": "10.1038/s41467-023-37989-6",
+          "license": "CC-BY-4.0",
+          "note": "Theory and equations, recommended experimental parameters, validation against GITT and EIS, and the stated assumptions and limitations."
+        },
+        {
+          "role": "primary",
+          "title": "ICI — Intermittent Current Interruption (project page)",
+          "authors": "Matthew J. Lacey",
+          "url": "https://lacey.se/projects/ici",
+          "accessed": "2026-06-12",
+          "note": "Method overview and development history (ICI 1.0-4.0), practical parameter choices, instrument compatibility, and demonstrated chemistries."
+        }
+      ],
+      "related_practices": [],
+      "related_protocols": [],
+      "created_at": "2026-06-12",
+      "updated_at": "2026-06-12",
+      "path": "methods/ici/method.md",
+      "staging": false
+    }
+  ],
   "staging": []
 }

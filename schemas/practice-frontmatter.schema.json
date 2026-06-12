@@ -4,7 +4,7 @@
   "title": "Best practice frontmatter",
   "description": "Structured metadata carried in the YAML frontmatter of each practice.md. Validated by scripts/build_manifest.py and CI.",
   "type": "object",
-  "required": ["id", "title", "summary", "version", "status", "applies_to", "maturity", "authors"],
+  "required": ["id", "title", "summary", "version", "status", "applies_to", "maturity", "authors", "sources"],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -88,10 +88,11 @@
         }
       }
     },
-    "citations": {
-      "description": "Supporting literature: DOIs, URLs, or free-text references.",
+    "sources": {
+      "description": "Structured provenance: the evidence this practice rests on. Every normative claim must trace to a source. Use role 'adapted' when text, figures, or tables are adapted from a source — that requires the source license and a note describing what was adapted.",
       "type": "array",
-      "items": { "type": "string", "minLength": 1 }
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/Source" }
     },
     "related_protocols": {
       "description": "BattINFO test-protocol IRIs this practice informs or is derived from.",
@@ -106,5 +107,45 @@
       "if": { "properties": { "status": { "const": "superseded" } } },
       "then": { "required": ["superseded_by"], "properties": { "superseded_by": { "type": "string" } } }
     }
-  ]
+  ],
+  "$defs": {
+    "Source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "title"],
+      "anyOf": [{ "required": ["doi"] }, { "required": ["url"] }],
+      "properties": {
+        "role": {
+          "description": "primary: the source the content is built on. background: context and history. adapted: text/figures/tables adapted from it (license + note required). data: dataset used. tool: software the document depends on.",
+          "type": "string",
+          "enum": ["primary", "background", "adapted", "data", "tool"]
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "authors": { "type": "string" },
+        "year": { "type": "integer" },
+        "venue": { "type": "string" },
+        "doi": { "type": "string", "pattern": "^10\\." },
+        "url": { "type": "string", "format": "uri" },
+        "license": {
+          "description": "License of the source material, e.g. CC-BY-4.0. Required for role 'adapted'.",
+          "type": "string"
+        },
+        "accessed": {
+          "description": "Date the source was consulted. Recommended for web sources.",
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "description": "What was used from this source. Required for role 'adapted'.",
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "role": { "const": "adapted" } }, "required": ["role"] },
+          "then": { "required": ["license", "note"] }
+        }
+      ]
+    }
+  }
 }
