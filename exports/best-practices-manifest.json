@@ -1,5 +1,47 @@
 {
   "schema_version": "battery-genome-best-practices/v1alpha1",
-  "practices": [],
+  "practices": [
+    {
+      "id": "practice:publish-timeseries-bdf",
+      "title": "Publish battery time-series data in the Battery Data Format (BDF)",
+      "summary": "Time-domain battery test data shared beyond the producing lab should be published as BDF tables — canonical column names, declared units, validated structure — alongside the original vendor files, with dataset-level metadata sidecars.",
+      "version": "0.1.0",
+      "status": "published",
+      "superseded_by": null,
+      "applies_to": {
+        "test_kinds": [
+          "cycling",
+          "capacity_check",
+          "rate_capability",
+          "quasi_ocv",
+          "hppc",
+          "ici",
+          "gitt",
+          "dcir",
+          "formation",
+          "calendar_ageing",
+          "rpt"
+        ],
+        "chemistries": [],
+        "cell_formats": []
+      },
+      "maturity": "proposal",
+      "authors": [
+        {
+          "name": "Simon Clark",
+          "orcid": null,
+          "affiliation": "SINTEF"
+        }
+      ],
+      "citations": [
+        "Battery Data Alliance, Battery Data Format specification and reference implementation. https://github.com/battery-data-alliance/battery-data-format",
+        "batterydf Python package. https://pypi.org/project/batterydf/"
+      ],
+      "created_at": "2026-06-12",
+      "updated_at": "2026-06-12",
+      "path": "practices/publish-timeseries-bdf/practice.md",
+      "staging": false
+    }
+  ],
   "staging": []
 }
