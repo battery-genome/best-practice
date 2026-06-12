@@ -22,17 +22,29 @@ Examples of the kind of content this repository is for:
 practices/
   _staging/            ← drafts under editorial review
   <practice-slug>/     ← published practices, one folder each
-    practice.md        ← the recommendation (markdown + structured frontmatter)
+    practice.md        ← the recommendation (YAML frontmatter + markdown body)
     assets/            ← figures, lookup tables
     notebooks/         ← computational provenance, where applicable
+schemas/               ← JSON Schema for the practice frontmatter
+templates/             ← starting point for new practices
+scripts/               ← validation + manifest export (build_manifest.py)
 exports/               ← compiled manifest consumed by the platform (CI-built)
 ```
 
-## Contributing
+## Authoring
 
-Practices move through an editorial lifecycle: draft → staging → review →
-published. Contribution and review guidelines will be documented in
-`CONTRIBUTING.md` as the repository takes shape.
+Copy `templates/practice-template.md` into
+`practices/_staging/<your-slug>/practice.md`, fill in the frontmatter and
+body, and validate with:
+
+```
+pip install -r scripts/requirements.txt
+python scripts/build_manifest.py --check
+```
+
+CI runs the same validation on every push and pull request. See
+[CONTRIBUTING.md](CONTRIBUTING.md) for the editorial lifecycle, versioning
+rules, and review expectations.
 
 ## License
 
